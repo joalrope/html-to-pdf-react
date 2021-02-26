@@ -4,9 +4,9 @@
 }
 
 .content-22 {
-  color: red;
   display: flex;
-  border: 1px solid #000;
+  flex-direction: column;
+  /* border: 1px solid #000; */
   /* background: green; */
 }
 

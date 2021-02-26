@@ -1,33 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import Invoice from "./Invoice";
+import '../styles.css'
 
-class App extends React.Component {
-  componentDidMount() {
+export const PdfComponent = () => {
+  useEffect(() => {
     window.html2canvas = html2canvas;
     var doc = new jsPDF({
-      orientation: "landscape",
-      unit: "px"
-      // format: [4, 2]
-    });
+      orientation: "portrait",
+      unit: "pt",
+      format: 'letter'
+    })
 
     var content = document.getElementById("content-22");
-    console.log("content", content);
-    console.log("document.body", document.body);
+
     doc.html(content, {
       callback: function(doc) {
-        console.log("in callback");
-        doc.save();
-      }
+        doc.viewerPreferences({"FitWindow":true});
+        doc.output('dataurlnewwindow');
+      },
+      margin: [20, 20, 20, 20]
     });
-  }
-  render() {
+    
+  }, [])
+   
     return (
       <div className="App content-22" id="content-22">
         <Invoice />
+        <Invoice className= "mt-4"/>
       </div>
     );
-  }
 }
-export default App;
