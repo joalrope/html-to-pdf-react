@@ -1,6 +1,12 @@
 import React from 'react'
+import {products} from './saleData';
 
 export const InvoiceFooter = () => {
+  const ivaTax = 0.16
+  const purchaseTotal = products.reduce((total, {totalItem}) => total + totalItem, 0)
+  const ivaTaxAmount = purchaseTotal * ivaTax
+  const invoiceTotal = Number(purchaseTotal) + Number(ivaTaxAmount)
+
   return (
     <div className="invoice-footer">
       <div className="left-invoice-signature">
@@ -34,15 +40,15 @@ export const InvoiceFooter = () => {
       <div className="invoive-summary">
         <div className="row-summ">
           <div className="descrip-summ">SUB-TOTAL:</div>
-          <div className="to-fill-summ">32.560,50</div>
+          <div className="to-fill-summ">{ new Intl.NumberFormat("es-ES").format(purchaseTotal) }</div>
         </div>
         <div className="row-summ">
           <div className="descrip-summ">IVA 16% Bs.:</div>
-          <div className="to-fill-summ">4.500,32</div>
+          <div className="to-fill-summ">{ new Intl.NumberFormat("es-ES").format(ivaTaxAmount) }</div>
         </div>
         <div className="row-summ">
           <div className="descrip-summ">TOTAL GENERAL:</div>
-          <div className="to-fill-summ">37.060,82</div>
+          <div className="to-fill-summ">{ new Intl.NumberFormat("es-ES").format(invoiceTotal) }</div>
         </div>
       </div>
     </div>   

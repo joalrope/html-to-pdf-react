@@ -28,7 +28,7 @@ export const PdfComponent = () => {
     return (
       <div className="App content-22" id="content-22">
         <Invoice />
-        <Invoice className= "mt-4"/>
+        <Invoice className= "mt-3"/>
       </div>
     );
 }

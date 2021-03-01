@@ -9,7 +9,6 @@
   margin: 1rem;
 }
 
-
 .invoice-header {
   border: 1 px solid black;
   display: flex;
@@ -68,29 +67,27 @@
   display: flex;
   flex-direction: row;
   border: 1px solid black;
-  margin-bottom: 3px;
+  margin-bottom: 0.1rem;
   flex: 1 1 50%;
-  padding: 0.1rem;
+  padding: 0.15rem;
 }
 
 .descrip-order {
   flex-direction: row;
-  flex: 1 1 60%;
+  flex: 1 1 35%;
   padding: 0.1rem;
   text-align: left;
-
 }
 
 .to-fill-order {
   flex-direction: row;
-  flex: 1 1 40%;
+  flex: 1 1 65%;
 }
 
 .descrip-phones {
   flex-direction: row;
   flex: 1 1 20%;
   padding: 0.1rem;
-
 }
 
 .to-fill-phones {
@@ -102,14 +99,11 @@
   flex-direction: row;
   flex: 1 1 5%;
   padding: 0.1rem;
-
 }
 
 .to-fill-rif, .to-fill-nit {
   flex-direction: row;
   flex: 1 1 95%;
-  font-size: 0.5rem;
-  text-align: left;
 }
 
 .descrip-date {
@@ -118,15 +112,25 @@
   padding: 0.1rem;
   font-size: 0.1rem;
   text-align: left;
-
 }
 
 .to-fill-date {
   flex-direction: row;
   flex: 1 1 94%;
+}
+
+.to-fill-order,
+.to-fill-phones,
+.to-fill-rif,
+.to-fill-nit,
+.to-fill-date {
   font-size: 0.5rem;
   text-align: left;
+  line-height: 0.66rem;
+  padding-left: 0.1rem;
 }
+
+
 
 .control-number-frame {
   display: flex;
@@ -189,17 +193,11 @@
 
 .products-table {
   width: 100%;
-  border-collapse: collapse;
   margin-top: 5px;
 }
 
-.products-table thead th {
-  border: 1PX solid black;
-  padding: 5px 10px;
-}
-
+.products-table thead tr th,
 .products-table tbody tr td {
-  border: 1PX solid black;
   padding: 4px 10px;
 }
 

@@ -7,21 +7,26 @@ export const InvoiceHeader = () => {
 
   const noteDate = moment().format("DD/MM/YYYY")
    
+  const ownerAddress1 = 'Zona industrial Los Pinos Manzana 24 Parcela 07 – Estado Bolívar Cod. Postal 8050'
+  const ownerAddress2 = 'Telefonos: 0286-9948874/-0414-8664310/0414-8672189 Email- Tractocenter71@gmail.com'
 
   const clientName = (isVisible) ? 'IMG International' : ''
   const clientAddress = (isVisible) ? 'Urbanización Unare II. Avenida Paseo Caroní. Puerto Ordaz Edo. Bolívar' : ''
   const paymentConditions = (isVisible) ? 'CREDITO 30 DÍAS' : ''
   const clientRIF = (isVisible) ? 'J-30354578-1' : ''
+  const clientPhones = (isVisible) ? '0286-9945258 - 9947874' : ''
 
-  const deliveryMode = false 
+  const deliveryMode = false
+  const purchaseOrder = '6510-85-9' 
+  const controlNumber = '2102-05'
   
   return (
     <div className="invoice-header">
       <div className="left-header">
         <img className="logo" src={logo} alt="" width="180px"/>
         <div className="address">
-          <p>Zona industrial Los Pinos Manzana 24 Parcela 07 – Estado Bolívar Cod. Postal 8050</p>
-          <p>Telefonos: 0286-9948874/-0414-8664310/0414-8672189 Email- Tractocenter71@gmail.com</p>
+          <p>{ownerAddress1}</p>
+          <p>{ownerAddress2}</p>
         </div>
         <div className="client-data">
           <div className="row-client">
@@ -41,11 +46,11 @@ export const InvoiceHeader = () => {
       <div className="right-header">
         <div className="row-info">
           <div className="descrip-order">N° O/DE COMPRA:</div>
-          <div className="to-fill-order"></div>
+          <div className="to-fill-order">{purchaseOrder}</div>
         </div>
         <div className="row-info">
           <div className="descrip-phones">TELÉFONOS:</div>
-          <div className="to-fill-phones"></div>
+          <div className="to-fill-phones">{clientPhones}</div>
         </div>
         <div className="row-info">
           <div className="descrip-rif">R.I.F.:</div>
@@ -71,7 +76,7 @@ export const InvoiceHeader = () => {
           <div className="control-number-counter">
             <div className="centered">
               <div className="control-number-descrip">N° DE CONTROL:</div>
-              <div className="control-number-code">2025</div>
+              <div className="control-number-code">{controlNumber}</div>
             </div>
           </div>
         </div>
