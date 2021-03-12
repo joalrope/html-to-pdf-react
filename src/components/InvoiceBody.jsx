@@ -1,7 +1,12 @@
 import React from 'react'
+import { columns } from './products-for-sale-table'
 import {products} from './saleData'
+import { TableAttrib } from './table-attrib-class'
+import '../styles.css'
 
 export const InvoiceBody = () => {
+
+  const attrib = new TableAttrib(columns)
   
   if (products.length < 10) {
     let i = products.length
@@ -11,7 +16,7 @@ export const InvoiceBody = () => {
         "id": i,
         "item": `0${i}`,
         "code": "",
-        "descrip": "",
+        "title": "",
         "qty": "",
         "salePrice": "",
         "totalItem": ""
@@ -24,27 +29,34 @@ export const InvoiceBody = () => {
     <div className="invoice-body">
       <table className="products-table">
         <thead>
-          <tr>
-            <th style={{width: '5vw',  textAlign: 'center'}}>ITEM</th>
-            <th style={{width: '10vw', textAlign: 'center'}}>N° PARTE</th>
-            <th style={{width: '60vw', textAlign: 'center'}}>DESCRIPCION</th>
-            <th style={{width: '8vw',  textAlign: 'center'}}>CANT.</th>
-            <th style={{width: '15vw', textAlign: 'center'}}>P. UNITARIO</th>
-            <th style={{width: '15vw', textAlign: 'center'}}>TOTAL ITEM</th>
-          </tr>
+            {
+              <tr>
+                {
+                  Object.keys(products[0]).map((key) => (
+                    attrib.isCellVisible(key) && <th key={key}>{attrib.getTitleHeader(key)}</th>
+                  ))
+                }
+              </tr>
+            }
         </thead>
         <tbody>
           {
-            products.map(({id, item, code, descrip, qty, salePrice, totalItem}) => 
-              <tr key={id}>
-                <td style={{textAlign: 'center'}}>{item}</td>
-                <td style={{textAlign: 'center'}}>{code}</td>
-                <td style={{textAlign: 'left'}}>{descrip}</td>
-                <td style={{textAlign: 'center'}}>{qty}</td>
-                <td style={{textAlign: 'right'}}>{ (salePrice > 0) ? salePrice.toLocaleString('es-ES', { maximumFractionDigits: 2, minimumFractionDigits: 2 }) : '' }</td>
-                <td style={{textAlign: 'right'}}>{ (totalItem > 0) ? new Intl.NumberFormat("es-ES").format(totalItem.toFixed(2)) : '' }</td>
+            Object.values(products).map((values) => (
+              <tr key={values.id}>
+                {
+                  Object.entries(values).map(([key, value]) => (
+                    attrib.isCellVisible(key) && 
+                        <td key={key}
+                            className={attrib.getCellClass(key)}
+                        >
+                            {attrib.getCellValue(key, value)}
+                        </td>
+                  ))
+                }
+
               </tr>
-            )}
+            ))
+          }
         </tbody>
       </table>
     </div>

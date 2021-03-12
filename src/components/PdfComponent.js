@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
-import Invoice from "./Invoice";
+import {Invoice} from "./Invoice";
 import '../styles.css'
 
 export const PdfComponent = () => {

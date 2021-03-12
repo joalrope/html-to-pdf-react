@@ -1,24 +1,23 @@
 import React from 'react'
-import moment from 'moment'
+import { buyerData, saleData } from './saleData'
 import logo from './logo.png'
 
-export const InvoiceHeader = () => {
-  const isVisible = true
 
-  const noteDate = moment().format("DD/MM/YYYY")
+export const InvoiceHeader = () => {
+  const saleDate = saleData.saleDate
    
   const ownerAddress1 = 'Zona industrial Los Pinos Manzana 24 Parcela 07 – Estado Bolívar Cod. Postal 8050'
   const ownerAddress2 = 'Telefonos: 0286-9948874/-0414-8664310/0414-8672189 Email- Tractocenter71@gmail.com'
 
-  const clientName = (isVisible) ? 'IMG International' : ''
-  const clientAddress = (isVisible) ? 'Urbanización Unare II. Avenida Paseo Caroní. Puerto Ordaz Edo. Bolívar' : ''
-  const paymentConditions = (isVisible) ? 'CREDITO 30 DÍAS' : ''
-  const clientRIF = (isVisible) ? 'J-30354578-1' : ''
-  const clientPhones = (isVisible) ? '0286-9945258 - 9947874' : ''
+  const clientName = buyerData.name
+  const clientAddress = buyerData.address
+  const paymentConditions = buyerData.paymentConditions
+  const clientRIF = buyerData.rif
+  const clientPhones = buyerData.phones
 
-  const deliveryMode = false
-  const purchaseOrder = '6510-85-9' 
-  const controlNumber = '2102-05'
+  const deliveryMode = saleData.deliveryMode
+  const purchaseOrder = buyerData.purchaseOrder 
+  const controlNumber = saleData.controlNumber
   
   return (
     <div className="invoice-header">
@@ -62,7 +61,7 @@ export const InvoiceHeader = () => {
         </div>
         <div className="row-info">
           <div className="descrip-date">FECHA:</div>
-          <div className="to-fill-date">{noteDate}</div>
+          <div className="to-fill-date">{saleDate}</div>
         </div>
         <div className="control-number-frame">
           <div className="delivery-note">

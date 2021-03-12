@@ -1,11 +1,16 @@
+/* eslint-disable no-extend-native */
 import React from 'react'
 import {products} from './saleData';
 
+
 export const InvoiceFooter = () => {
+  const locale = 'es-Es'
+  const digits = 2
   const ivaTax = 0.16
-  const purchaseTotal = products.reduce((total, {totalItem}) => total + totalItem, 0)
+  const purchaseTotal = Number(products.reduce((total, {totalItem}) => total + totalItem, 0))
   const ivaTaxAmount = purchaseTotal * ivaTax
-  const invoiceTotal = Number(purchaseTotal) + Number(ivaTaxAmount)
+  const invoiceTotal = purchaseTotal + ivaTaxAmount
+
 
   return (
     <div className="invoice-footer">
@@ -40,15 +45,15 @@ export const InvoiceFooter = () => {
       <div className="invoive-summary">
         <div className="row-summ">
           <div className="descrip-summ">SUB-TOTAL:</div>
-          <div className="to-fill-summ">{ new Intl.NumberFormat("es-ES").format(purchaseTotal) }</div>
+          <div className="to-fill-summ">{ purchaseTotal.toLocaleString(locale, { maximumFractionDigits: Number(digits), minimumFractionDigits: Number(digits) })}</div>
         </div>
         <div className="row-summ">
           <div className="descrip-summ">IVA 16% Bs.:</div>
-          <div className="to-fill-summ">{ new Intl.NumberFormat("es-ES").format(ivaTaxAmount) }</div>
+          <div className="to-fill-summ">{ ivaTaxAmount.toLocaleString(locale, { maximumFractionDigits: Number(digits), minimumFractionDigits: Number(digits) }) }</div>
         </div>
         <div className="row-summ">
           <div className="descrip-summ">TOTAL GENERAL:</div>
-          <div className="to-fill-summ">{ new Intl.NumberFormat("es-ES").format(invoiceTotal) }</div>
+          <div className="to-fill-summ gral-total">{ invoiceTotal.toLocaleString(locale, { maximumFractionDigits: Number(digits), minimumFractionDigits: Number(digits) })}</div>
         </div>
       </div>
     </div>   
